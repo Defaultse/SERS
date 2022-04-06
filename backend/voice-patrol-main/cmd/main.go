@@ -8,6 +8,14 @@ import (
 
 const uri = "mongodb://localhost:27017/?readPreference=primary&appname=MongoDB%20Compass&directConnection=true&ssl=false"
 
+// var upgrader = websocket.Upgrader{
+//     ReadBufferSize:  1024,
+//   WriteBufferSize: 1024,
+
+//   CheckOrigin: func(r *http.Request) bool { return true },
+// }
+
+
 func main() {
 	ctx := context.Background()
 

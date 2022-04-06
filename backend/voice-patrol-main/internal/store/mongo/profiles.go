@@ -3,11 +3,12 @@ package mongo
 import (
 	"context"
 	"fmt"
-	"go.mongodb.org/mongo-driver/bson"
-	"go.mongodb.org/mongo-driver/bson/primitive"
 	"log"
 	"voice-patrol-main/internal/models"
 	"voice-patrol-main/internal/store"
+
+	"go.mongodb.org/mongo-driver/bson"
+	"go.mongodb.org/mongo-driver/bson/primitive"
 
 	"go.mongodb.org/mongo-driver/mongo"
 )
@@ -38,6 +39,14 @@ func (p ProfilesRepository) All(ctx context.Context) ([]*models.Profile, error) 
 		log.Fatal(err)
 	}
 	return profiles, err
+}
+
+func (p ProfilesRepository) GetProfile(ctx context.Context, email string, password_hash string) (*models.Profile, error) {
+	profile := new(models.Profile)
+	// if err := a.conn.Get(profile, "SELECT * FROM users WHERE email=$1 AND password_hash=$2", email, password_hash); err != nil {
+	// 	return nil, err
+	// }
+	return profile, nil
 }
 
 func (p ProfilesRepository) Create(ctx context.Context, profile *models.Profile) error {

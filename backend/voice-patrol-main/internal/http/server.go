@@ -35,7 +35,16 @@ func NewServer(ctx context.Context, opts ...ServerOption) *Server {
 func (s *Server) basicHandler() chi.Router {
 	r := chi.NewRouter()
 	r.Get("/profiles", s.getAllUsers)
-	r.Post("/profile/create", s.createProfile)
+	r.Post("/profiles/create", s.createProfile)
+	r.Post("/profiles/login", func(w http.ResponseWriter, r *http.Request) {})
+	r.Put("/profiles", func(w http.ResponseWriter, r *http.Request) {})
+	r.Delete("/profiles/{id}", func(w http.ResponseWriter, r *http.Request) {})
+
+
+	r.Get("/audiofiles", func(w http.ResponseWriter, r *http.Request) {})
+	r.Get("/audiofiles/2", s.getAudioByID)
+	r.Post("/audiofiles/upload", s.uploadAudioFile)
+	r.Delete("/audiofiles/{id}", func(w http.ResponseWriter, r *http.Request) {})
 
 	return r
 }

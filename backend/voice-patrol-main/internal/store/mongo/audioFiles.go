@@ -2,9 +2,10 @@ package mongo
 
 import (
 	"context"
-	"go.mongodb.org/mongo-driver/mongo"
 	"voice-patrol-main/internal/models"
 	"voice-patrol-main/internal/store"
+
+	"go.mongodb.org/mongo-driver/mongo"
 )
 
 func (db *DB) AudioFile() store.AudioFileRepository {
@@ -31,6 +32,14 @@ func (a AudioFilesRepository) Create(ctx context.Context, audioFile *models.Audi
 func (a AudioFilesRepository) All(ctx context.Context) ([]*models.AudioFiles, error) {
 	//TODO implement me
 	panic("implement me")
+}
+
+func (a AudioFilesRepository) GetUser(ctx context.Context, email string, password_hash string) (*models.Profile, error) {
+	profile := new(models.Profile)
+	// if err := a.conn.Get(profile, "SELECT * FROM users WHERE email=$1 AND password_hash=$2", email, password_hash); err != nil {
+	// 	return nil, err
+	// }
+	return profile, nil
 }
 
 func (a AudioFilesRepository) ByID(ctx context.Context, id int) (*models.AudioFiles, error) {

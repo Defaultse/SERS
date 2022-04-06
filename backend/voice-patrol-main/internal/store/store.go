@@ -16,6 +16,7 @@ type Store interface {
 type ProfileRepository interface {
 	Create(ctx context.Context, profile *models.Profile) error
 	All(ctx context.Context) ([]*models.Profile, error)
+	GetProfile(ctx context.Context, email string, password_hash string) (*models.Profile, error)
 	ByUsername(ctx context.Context, username string) (*models.Profile, error)
 	Update(ctx context.Context, profile *models.Profile) error
 	Delete(ctx context.Context, id int) error

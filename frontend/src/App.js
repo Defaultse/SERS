@@ -1,11 +1,13 @@
 import logo from './logo.svg';
+import React from 'react';
 import {BrowserRouter as Router, Route, Routes} from 'react-router-dom'
-import './App.css';
-import NavBar from './Navbar/Navber';
+import NavBar from './Navbar/Navbar';
 import { lazy, Suspense } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Login = lazy(()=>import('./Login/Login'));
 const Registration = lazy(()=>import('./Registration/Registration'));
+const Main = lazy(()=>import('./Main/Main'));
 
 function App() {
   return (
@@ -13,8 +15,9 @@ function App() {
       <NavBar />
       <Suspense fallback="Loading...">
       <Routes>
-        <Route path="/" exact element={<Login/>}></Route>
+        <Route path="/login" exact element={<Login/>}></Route>
         <Route path="/registration" exact element={<Registration/>}></Route>
+        <Route path="/" exact element={<Main/>}></Route>
       </Routes>
     </Suspense>
     </Router>

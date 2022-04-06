@@ -8,6 +8,11 @@ require (
 )
 
 require (
+	github.com/dgrijalva/jwt-go v3.2.0+incompatible // indirect
+	github.com/gorilla/websocket v1.5.0 // indirect
+)
+
+require (
 	github.com/go-chi/render v1.0.1
 	github.com/go-stack/stack v1.8.0 // indirect
 	github.com/golang/snappy v0.0.1 // indirect
