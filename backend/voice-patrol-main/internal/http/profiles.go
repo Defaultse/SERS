@@ -14,9 +14,9 @@ import (
 )
 
 const (
-	salt = "jojozxCCMnb98736Jxz"
+	salt       = "jojozxCCMnb98736Jxz"
 	signingKey = "qrkjk#4#%35FSFJlja#4353KSFjH"
-	tokenTTL = 12 * time.Hour
+	tokenTTL   = 12 * time.Hour
 	authHeader = "Authorization"
 )
 
@@ -32,14 +32,14 @@ func (s *Server) login(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	profile, err := s.store.Profile().GetProfile(r.Context(), credentials.Email, generateHash(credentials.PasswordHash))
+	profile, err := s.store.Profile().GetProfile(r.Context(), credentials.Username, generateHash(credentials.PasswordHash))
 	if err != nil {
 		fmt.Fprintf(w, "Unknown err: %v", err)
 		return
 	}
 
 	token, err := generateToken(profile)
-	fmt.Fprintf(w, "Token: %s", token)
+	fmt.Fprintf(w, token)
 }
 
 func VerifyToken(w http.ResponseWriter, r *http.Request) int {
@@ -79,15 +79,23 @@ func (s *Server) createProfile(w http.ResponseWriter, r *http.Request) {
 		fmt.Fprintf(w, "Unknown err: %v", err)
 		return
 	}
+
 	profile.PasswordHash = generateHash(profile.PasswordHash)
 	if err := s.store.Profile().Create(r.Context(), profile); err != nil {
 		w.WriteHeader(http.StatusInternalServerError)
 		fmt.Fprintf(w, "DB err: %v", err)
 		return
 	}
+
+	//Creating container for profile in Azure storage
+	err := s.createAzureProfileContainer(profile.Username)
+	if err != nil {
+		fmt.Printf("Error while creating container in Azure: %v", err)
+	}
+
 }
 
-func generateToken(profile *models.Profile) (string, error){
+func generateToken(profile *models.Profile) (string, error) {
 	var err error
 	atClaims := jwt.MapClaims{}
 	atClaims["authorized"] = true

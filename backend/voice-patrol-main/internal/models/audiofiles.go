@@ -5,18 +5,17 @@ import (
 )
 
 type AudioFiles struct {
-	ProfileId     int       `json:"ProfileId"`
-	AudioDate     time.Time `json:"AudioDate"`
-	UploadDate    time.Time `json:"UploadDate"`
-	AudioFile     string    `json:"AudioFile"`
-	AudioDuration time.Duration
+	ProfileId     int       `json:"ProfileId" bson:"ProfileId,omitempty"`
+	AudioDate     time.Time `json:"AudioDate" bson:"AudioDate"`
+	UploadDate    time.Time `json:"UploadDate" bson:"UploadDate"`
+	AudioFilePath string    `json:"AudioFile" bson:"AudioFilePath"`
 	AudioSegments []AudioSection
 }
 
 type AudioSection struct {
-	SegmentIndex int           `json:"SegmentOrder"`
-	SegmentFile  string        `json:"SegmentFile"`
-	Cut          time.Duration `json:"Cut"`
+	SegmentOrder    int    `json:"SegmentOrder" bson:"SegmentOrder"`
+	SegmentFilePath string `json:"SegmentFilePath" bson:"SegmentFilePath"`
+	SegmentEmotion  string `json:"SegmentEmotion" bson:"SegmentEmotion"`
 }
 
 // m, _ := time.ParseDuration("1m30s")

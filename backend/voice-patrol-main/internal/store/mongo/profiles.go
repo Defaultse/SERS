@@ -41,12 +41,19 @@ func (p ProfilesRepository) All(ctx context.Context) ([]*models.Profile, error) 
 	return profiles, err
 }
 
-func (p ProfilesRepository) GetProfile(ctx context.Context, email string, password_hash string) (*models.Profile, error) {
-	profile := new(models.Profile)
-	// if err := a.conn.Get(profile, "SELECT * FROM users WHERE email=$1 AND password_hash=$2", email, password_hash); err != nil {
-	// 	return nil, err
-	// }
-	return profile, nil
+func (p ProfilesRepository) GetProfile(ctx context.Context, username string, password_hash string) (*models.Profile, error) {
+	var profile models.Profile
+	err := p.collection.FindOne(
+		context.TODO(),
+		bson.D{{"username", username}},
+	).Decode(&profile)
+	if err != nil {
+		log.Fatal(err)
+	}
+	if profile.PasswordHash == password_hash {
+		return &profile, err
+	}
+	return nil, nil
 }
 
 func (p ProfilesRepository) Create(ctx context.Context, profile *models.Profile) error {

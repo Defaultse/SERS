@@ -1,6 +1,7 @@
 package http
 
 import (
+	"github.com/Azure/azure-sdk-for-go/sdk/storage/azblob"
 	"voice-patrol-main/internal/store"
 )
 
@@ -15,5 +16,11 @@ func WithAddress(address string) ServerOption {
 func WithStore(store store.Store) ServerOption {
 	return func(srv *Server) {
 		srv.store = store
+	}
+}
+
+func WithAzureClient(azureClient *azblob.ServiceClient) ServerOption {
+	return func(srv *Server) {
+		srv.azureClient = azureClient
 	}
 }

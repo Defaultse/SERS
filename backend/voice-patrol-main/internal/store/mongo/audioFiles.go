@@ -2,6 +2,8 @@ package mongo
 
 import (
 	"context"
+	"fmt"
+	"go.mongodb.org/mongo-driver/bson/primitive"
 	"voice-patrol-main/internal/models"
 	"voice-patrol-main/internal/store"
 
@@ -25,21 +27,20 @@ func NewAudioFileRepository(conn *mongo.Database) store.AudioFileRepository {
 }
 
 func (a AudioFilesRepository) Create(ctx context.Context, audioFile *models.AudioFiles) error {
-	//TODO implement me
-	panic("implement me")
+	result, err := a.collection.InsertOne(ctx, audioFile)
+	if err != nil {
+		return fmt.Errorf("failed to create profile due to: %v", err)
+	}
+	oid, ok := result.InsertedID.(primitive.ObjectID)
+	if ok {
+		oid.Hex()
+	}
+	return err
 }
 
 func (a AudioFilesRepository) All(ctx context.Context) ([]*models.AudioFiles, error) {
 	//TODO implement me
 	panic("implement me")
-}
-
-func (a AudioFilesRepository) GetUser(ctx context.Context, email string, password_hash string) (*models.Profile, error) {
-	profile := new(models.Profile)
-	// if err := a.conn.Get(profile, "SELECT * FROM users WHERE email=$1 AND password_hash=$2", email, password_hash); err != nil {
-	// 	return nil, err
-	// }
-	return profile, nil
 }
 
 func (a AudioFilesRepository) ByID(ctx context.Context, id int) (*models.AudioFiles, error) {

@@ -2,19 +2,25 @@ package http
 
 import (
 	"context"
+	"github.com/Azure/azure-sdk-for-go/sdk/storage/azblob"
 	"log"
 	"net/http"
 	"time"
 	"voice-patrol-main/internal/store"
 
 	"github.com/go-chi/chi"
+	"github.com/rs/cors"
 )
+
+const sampleRate = 44100
+const seconds = 2
 
 type Server struct {
 	ctx         context.Context
 	idleConnsCh chan struct{}
 
-	store store.Store
+	store       store.Store
+	azureClient *azblob.ServiceClient
 
 	Address string
 }
@@ -36,10 +42,9 @@ func (s *Server) basicHandler() chi.Router {
 	r := chi.NewRouter()
 	r.Get("/profiles", s.getAllUsers)
 	r.Post("/profiles/create", s.createProfile)
-	r.Post("/profiles/login", func(w http.ResponseWriter, r *http.Request) {})
+	r.Post("/profiles/login", s.login)
 	r.Put("/profiles", func(w http.ResponseWriter, r *http.Request) {})
 	r.Delete("/profiles/{id}", func(w http.ResponseWriter, r *http.Request) {})
-
 
 	r.Get("/audiofiles", func(w http.ResponseWriter, r *http.Request) {})
 	r.Get("/audiofiles/2", s.getAudioByID)
@@ -52,7 +57,7 @@ func (s *Server) basicHandler() chi.Router {
 func (s *Server) Run() error {
 	srv := &http.Server{
 		Addr:         s.Address,
-		Handler:      s.basicHandler(),
+		Handler:      cors.AllowAll().Handler(s.basicHandler()),
 		ReadTimeout:  time.Second * 5,
 		WriteTimeout: time.Second * 30,
 	}
