@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="ALL" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="14673cee-1c8c-4195-86b1-1294801aa249" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/backend/api-audio-processing/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/api-audio-processing/emotion_recognition.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/api-speech-segmentation/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/api-speech-segmentation/.idea/api-speech-segmentation.iml" beforeDir="false" afterPath="$PROJECT_DIR$/backend/api-audio-processing/.idea/api-audio-processing.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/api-speech-segmentation/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/backend/api-audio-processing/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/api-speech-segmentation/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/backend/api-audio-processing/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/api-speech-segmentation/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/api-speech-segmentation/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/backend/api-audio-processing/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/api-speech-segmentation/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/api-audio-processing/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/api-speech-segmentation/audio_segmentation.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/api-audio-processing/audio_segmentation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/api-speech-segmentation/emotion_recognition.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/speech-diarization/working/03-01-01-01-02-01-02.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/speech-diarization/working/0_testcall.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/speech-diarization/working/10_testcall.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/speech-diarization/working/11_testcall.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/speech-diarization/working/12_testcall.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/speech-diarization/working/14_testcall.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/speech-diarization/working/15_testcall.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/speech-diarization/working/16_testcall.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/speech-diarization/working/17_testcall.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/speech-diarization/working/18_testcall.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/speech-diarization/working/19_testcall.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/speech-diarization/working/1_testcall.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/speech-diarization/working/20_testcall.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/speech-diarization/working/21_testcall.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/speech-diarization/working/22_testcall.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/speech-diarization/working/2_testcall.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/speech-diarization/working/3_testcall.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/speech-diarization/working/4_testcall.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/speech-diarization/working/5_testcall.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/speech-diarization/working/6_testcall.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/speech-diarization/working/7_testcall.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/speech-diarization/working/8_testcall.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/speech-diarization/working/9_testcall.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/testcall.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/voice-patrol-main/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/voice-patrol-main/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/voice-patrol-main/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/voice-patrol-main/.idea/voice-patrol-main.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/voice-patrol-main/cmd/main.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/voice-patrol-main/go.mod" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/voice-patrol-main/go.sum" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/voice-patrol-main/internal/http/audiofiles.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/voice-patrol-main/internal/http/azure.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/voice-patrol-main/internal/http/profiles.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/voice-patrol-main/internal/http/server.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/voice-patrol-main/internal/http/server_opts.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/voice-patrol-main/internal/http/tmp/2118756701-Eternal_Raijin_La_Espada.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/voice-patrol-main/internal/models/audiofiles.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/voice-patrol-main/internal/models/profiles.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/voice-patrol-main/internal/store/mongo/audioFiles.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/voice-patrol-main/internal/store/mongo/db.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/voice-patrol-main/internal/store/mongo/profiles.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/voice-patrol-main/internal/store/store.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/Item/Item.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/Item/Item.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/Item/Item.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/Main/Main.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/Main/Main.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice patrol - audio.drawio" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice patrol - entities.drawio" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/voice patrol.drawio" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="GOROOT" url="file://$PROJECT_DIR$/../../../../../Program Files/Go" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GoLibraries">
+    <option name="indexEntireGoPath" value="false" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="286YE2DuKx20Ov9yve4ZN6z3GQe" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="go.formatter.settings.were.checked" value="true" />
+    <property name="go.import.settings.migrated" value="true" />
+    <property name="go.modules.go.list.on.any.changes.was.set" value="true" />
+    <property name="go.sdk.automatically.set" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/backend/master-api" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="VgoProject">
+    <integration-enabled>true</integration-enabled>
+  </component>
+</project>
