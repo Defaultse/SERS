@@ -29,30 +29,54 @@ func NewAudioFileRepository(conn *mongo.Database) store.AudioFileRepository {
 	return &AudioFilesRepository{collection: conn.Collection("AudioFiles")}
 }
 
-func (a AudioFilesRepository) Create(ctx context.Context, audioFile *models.AudioFiles) error {
+func (a AudioFilesRepository) Create(ctx context.Context, audioFile *models.AudioFiles) (string, error) {
 	result, err := a.collection.InsertOne(ctx, audioFile)
 	if err != nil {
-		return fmt.Errorf("failed to create profile due to: %v", err)
+		return "", fmt.Errorf("failed to create profile due to: %v", err)
 	}
 	oid, ok := result.InsertedID.(primitive.ObjectID)
 	if ok {
 		oid.Hex()
 	}
-	return err
+	return oid.Hex(), nil
 }
 
 func (a AudioFilesRepository) All(ctx context.Context, tokenData *models.Profile) ([]*models.AudioFiles, error) {
 	audioFiles := make([]*models.AudioFiles, 0)
 	cursor, err := a.collection.Find(
 		context.TODO(),
-		bson.D{{"ProfileId", tokenData.ID}},
+		//bson.D{{"ProfileId", tokenData.ID}},
+		bson.D{},
 	)
+	fmt.Println(cursor)
+
 	if err != nil {
 		log.Fatal(err)
 	}
-	if err = cursor.All(context.TODO(), &audioFiles); err != nil {
-		panic(err)
+	fmt.Println(tokenData.ID, cursor.All(context.TODO(), &audioFiles))
+	for cursor.Next(context.TODO()) {
+		//Create a value into which the single document can be decoded
+		var elem *models.AudioFiles
+		err := cursor.Decode(&elem)
+		if err != nil {
+			log.Fatal(err)
+		}
+
+		audioFiles = append(audioFiles, elem)
+
 	}
+	fmt.Println(audioFiles)
+
+	if err := cursor.Err(); err != nil {
+		log.Fatal(err)
+	}
+
+	//Close the cursor once finished
+	cursor.Close(context.TODO())
+
+	//if err = cursor.All(context.TODO(), &audioFiles); err != nil {
+	//	panic(err)
+	//}
 	return audioFiles, err
 }
 

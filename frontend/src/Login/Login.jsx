@@ -19,7 +19,6 @@ export default function Login() {
 		}).then((response) => {
 			console.log(response);
 			localStorage.setItem('token', response.data);
-			alert(localStorage.getItem('token'));
 			window.location.replace('/');
 			dispatch({ type: Logged.Login });
 		});

@@ -23,7 +23,7 @@ type ProfileRepository interface {
 }
 
 type AudioFileRepository interface {
-	Create(ctx context.Context, audioFile *models.AudioFiles) error
+	Create(ctx context.Context, audioFile *models.AudioFiles) (string, error)
 	All(ctx context.Context, tokenData *models.Profile) ([]*models.AudioFiles, error)
 	ByID(ctx context.Context, id int) (*models.AudioFiles, error)
 	Update(ctx context.Context, audioFile *models.AudioFiles) error

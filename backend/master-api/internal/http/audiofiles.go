@@ -6,9 +6,9 @@ import (
 	"fmt"
 	"github.com/go-chi/chi"
 	"io/ioutil"
-	"log"
 	"master-api/internal/models"
 	"net/http"
+	"os"
 	"time"
 
 	"github.com/go-chi/render"
@@ -53,7 +53,7 @@ func (s *Server) uploadAudioFile(w http.ResponseWriter, r *http.Request) {
 
 	//fmt.Printf("File Size: %+v\n", handler.Size)
 	//fmt.Printf("MIME Header: %+v\n", handler.Header)
-	tempFile, err := ioutil.TempFile("C:/Users/User/Desktop/diploma/voice-patrol/backend/test/qwe", fmt.Sprint("*-", handler.Filename))
+	tempFile, err := ioutil.TempFile("C:/Users/User/Desktop/diploma/diploma/backend/file-storage/qwe/", fmt.Sprint("*_", handler.Filename))
 	if err != nil {
 		fmt.Println(err)
 	}
@@ -70,8 +70,11 @@ func (s *Server) uploadAudioFile(w http.ResponseWriter, r *http.Request) {
 		ProfileId:     tokenData.ID,
 		UploadDate:    time.Now(),
 		AudioFilePath: tempFile.Name(),
+		AudioSegments: []models.AudioSection{},
 	}
-	if err := s.store.AudioFile().Create(r.Context(), &audioFile); err != nil {
+
+	createdObjectID, err := s.store.AudioFile().Create(r.Context(), &audioFile)
+	if err != nil {
 		w.WriteHeader(http.StatusInternalServerError)
 		fmt.Fprintf(w, "DB err: %v", err)
 		return
@@ -80,17 +83,11 @@ func (s *Server) uploadAudioFile(w http.ResponseWriter, r *http.Request) {
 
 	//Sending signal to audio segmentation model
 	postBody := map[string]string{
-		"filePath":  tempFile.Name(),
-		"profileId": tokenData.ID,
+		"filePath":        tempFile.Name(),
+		"createdObjectID": createdObjectID,
 	}
 	jsonValue, _ := json.Marshal(postBody)
-	resp, err := http.Post("http://127.0.0.1:5000/api/segmentAudio", "application/json", bytes.NewBuffer(jsonValue))
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer resp.Body.Close()
-	fmt.Fprintf(w, "Response from second api: %v", resp)
-
+	go http.Post("http://127.0.0.1:5000/api/segmentAudio", "application/json", bytes.NewBuffer(jsonValue))
 }
 
 func (s *Server) getAudioByID(w http.ResponseWriter, r *http.Request) {
@@ -105,7 +102,8 @@ func (s *Server) getAudioByID(w http.ResponseWriter, r *http.Request) {
 	// }
 	// fmt.Println(id)
 	//tokenData := VerifyToken(w, r)
-	getAudioFile := s.getAudioFromBlob("qwe", "testcall.wav")
+
+	//getAudioFile := s.getAudioFromBlob("qwe", "testcall.wav")
 
 	w.Header().Set("Connection", "Keep-Alive")
 	w.Header().Set("Access-Control-Allow-Origin", "*")
@@ -113,16 +111,23 @@ func (s *Server) getAudioByID(w http.ResponseWriter, r *http.Request) {
 	//w.Header().Set("Transfer-Encoding", "chunked")
 	w.Header().Set("Content-Type", "audio/mpeg")
 
-	//file, _ := os.ReadFile("C:/Users/User/Desktop/diploma/voice-patrol/backend/voice-patrol-main/internal/http/tmp/2118756701-Eternal_Raijin_La_Espada.mp3")
-	//n, err := w.Write(file)
+	//audioFile, err := s.store.Profile().GetProfile(r.Context(), idStr)
 	//if err != nil {
-	//	fmt.Println(err)
+	//	fmt.Fprintf(w, "Unknown err: %v", err)
+	//	return
 	//}
+
+	file, err := os.ReadFile("C:/Users/User/Desktop/diploma/testcall.wav")
+	//n, err := w.Write(file)
+	if err != nil {
+		fmt.Println(err)
+	}
 	//fmt.Println(n, "bytes written")
 
-	//http.ServeContent(w, r, "audio", time.Now(), bytes.NewReader(file))
-	http.ServeContent(w, r, "audio", time.Now(), bytes.NewReader([]byte(getAudioFile)))
-	w.Header().Set("Connection", "Keep-Alive")
+	http.ServeContent(w, r, "audio", time.Now(), bytes.NewReader(file))
+	//http.ServeContent(w, r, "audio", time.Now(), bytes.NewReader([]byte(getAudioFile)))
+	//w.Header().Set("Connection", "Keep-Alive")
+
 	//from azure
 	//var buf []byte
 	//buf, err := json.Marshal(getAudioFile)

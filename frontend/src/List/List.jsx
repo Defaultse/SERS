@@ -5,25 +5,27 @@ import React, { useEffect, useState, useRef, createRef } from 'react';
 import './List.css';
 import AudioPlayer from 'react-h5-audio-player';
 import 'react-h5-audio-player/lib/styles.css';
-import axios from 'axios';
+import Axios from 'axios';
 import { Accordion, FormControl, Button } from 'react-bootstrap';
 import Item from '../Item/Item';
 
 export default function List() {
-	// list track urls
-	const [ loading, SetLoading ] = useState();
-	const inputRef = useRef();
+	const [ audioList, setAudioList ] = useState([]);
 
 	// const axios = require('axios').default;
 
-	// useEffect(
-	// 	() => {
-	// 		SetLoading(false);
-	// 		sendGetRequest();
-	// 		//get here urls
-	// 	},
-	// 	[ loading ]
-	// );
+	const instance = Axios.create({
+		baseURL: 'http://localhost:8000/audiofiles',
+		timeout: 1000,
+		headers: { Authorization: 'Bearer ' + localStorage.getItem('token') }
+	});
+
+	useEffect(() => {
+		instance.get('').then((response) => {
+			setAudioList(response.data)
+		});
+		console.log(audioList)
+	}, []);
 
 	// const sendGetRequest = async () => {
 	// 	try {
@@ -36,10 +38,13 @@ export default function List() {
 	// 	SetLoading(false);
 	// };
 
+	const list = audioList.map((item) => <Item key={item.id} item={item}/>);
+
 	return (
 		<div className="app-container">
-			<Accordion alwaysOpen>
-				<Accordion.Item eventKey="0">
+			<Accordion alwaysOpen className="app-container">
+				{list}
+				{/* <Accordion.Item>
 					<Accordion.Header>Audio #1</Accordion.Header>
 					<Accordion.Body>
 						<h3>Fetched from Master API</h3>
@@ -49,7 +54,7 @@ export default function List() {
 								type="audio/mpeg"
 							/>
 							Your browser does not support the
-							{/* <code>audio</code> element. */}
+							 <code>audio</code> element. 
 						</audio>
 						<table class="table">
 							<thead>
@@ -68,7 +73,7 @@ export default function List() {
 										<audio controls preload="auto" type="audio/mpeg">
 											<source src={``} type="audio/mpeg" />
 											Your browser does not support the
-											{/* <code>audio</code> element. */}
+											<code>audio</code> element. 
 										</audio>
 									</td>
 									<td>Angry</td>
@@ -80,7 +85,7 @@ export default function List() {
 										<audio controls preload="auto" type="audio/mpeg">
 											<source src={``} type="audio/mpeg" />
 											Your browser does not support the
-											{/* <code>audio</code> element. */}
+											<code>audio</code> element. 
 										</audio>
 									</td>
 									<td>Neutral</td>
@@ -90,14 +95,14 @@ export default function List() {
 						<Button variant="danger">Delete audio files</Button>
 					</Accordion.Body>
 				</Accordion.Item>
-				<Accordion.Item eventKey="1">
+				<Accordion.Item>
 					<Accordion.Header>Audio #2</Accordion.Header>
 					<Accordion.Body>
 						<h3>Fetched from Azure blob</h3>
 						<audio controls preload="auto" type="audio/mpeg">
 							<source src={`https://diploma.blob.core.windows.net/qwe/testcall.wav`} type="audio/mpeg" />
 							Your browser does not support the
-							{/* <code>audio</code> element. */}
+						    <code>audio</code> element. 
 						</audio>
 						<table class="table">
 							<thead>
@@ -116,7 +121,7 @@ export default function List() {
 										<audio controls preload="auto" type="audio/mpeg">
 											<source src={``} type="audio/mpeg" />
 											Your browser does not support the
-											{/* <code>audio</code> element. */}
+										    <code>audio</code> element.
 										</audio>
 									</td>
 									<td>Angry</td>
@@ -128,7 +133,6 @@ export default function List() {
 										<audio controls preload="auto" type="audio/mpeg">
 											<source src={``} type="audio/mpeg" />
 											Your browser does not support the
-											{/* <code>audio</code> element. */}
 										</audio>
 									</td>
 									<td>Neutral</td>
@@ -137,8 +141,7 @@ export default function List() {
 						</table>
 						<Button variant="danger">Delete audio files</Button>
 					</Accordion.Body>
-				</Accordion.Item>
-				<Item />
+				</Accordion.Item> */}
 			</Accordion>
 
 			{/* <audio

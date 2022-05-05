@@ -5,11 +5,12 @@ import (
 )
 
 type AudioFiles struct {
-	ProfileId     string       `json:"ProfileId" bson:"ProfileId,omitempty"`
-	AudioDate     time.Time `json:"AudioDate" bson:"AudioDate"`
-	UploadDate    time.Time `json:"UploadDate" bson:"UploadDate"`
-	AudioFilePath string    `json:"AudioFile" bson:"AudioFilePath"`
-	AudioSegments []AudioSection
+	ID            string         `json:"id" bson:"_id,omitempty"`
+	ProfileId     string         `json:"ProfileId" bson:"ProfileId,omitempty"`
+	AudioDate     time.Time      `json:"AudioDate" bson:"AudioDate"`
+	UploadDate    time.Time      `json:"UploadDate" bson:"UploadDate"`
+	AudioFilePath string         `json:"AudioFile" bson:"AudioFilePath"`
+	AudioSegments []AudioSection `bson:"AudioSegments"`
 }
 
 type AudioSection struct {

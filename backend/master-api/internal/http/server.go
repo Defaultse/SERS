@@ -69,6 +69,9 @@ func (s *Server) basicHandler() chi.Router {
 
 	r.Get("/audiofiles", s.getAll)
 	r.Get("/audiofiles/{id}/{jwt}", s.getAudioByID)
+	r.Get("/audiofiles/segment/{id}/{jwt}", func(writer http.ResponseWriter, request *http.Request) {
+
+	})
 	r.Post("/audiofiles/upload", s.uploadAudioFile)
 	r.Delete("/audiofiles/{id}", func(w http.ResponseWriter, r *http.Request) {})
 
