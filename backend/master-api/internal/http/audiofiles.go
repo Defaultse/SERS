@@ -9,6 +9,7 @@ import (
 	"master-api/internal/models"
 	"net/http"
 	"os"
+	"strconv"
 	"time"
 
 	"github.com/go-chi/render"
@@ -25,6 +26,18 @@ func (s *Server) getAll(w http.ResponseWriter, r *http.Request) {
 
 	render.JSON(w, r, audioFiles)
 	// fmt.Fprintf(w, "%v", profileId)
+}
+
+func (s *Server) getByID(w http.ResponseWriter, r *http.Request) {
+	//tokenData := VerifyToken(w, r)
+	idStr := chi.URLParam(r, "id")
+	audioFiles, err := s.store.AudioFile().ByID(r.Context(), idStr)
+	if err != nil {
+		w.WriteHeader(http.StatusBadRequest)
+		fmt.Fprintf(w, "DB err: %v", err)
+		return
+	}
+	render.JSON(w, r, audioFiles)
 }
 
 func (s *Server) uploadAudioFile(w http.ResponseWriter, r *http.Request) {
@@ -91,10 +104,50 @@ func (s *Server) uploadAudioFile(w http.ResponseWriter, r *http.Request) {
 }
 
 func (s *Server) getAudioByID(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Connection", "Keep-Alive")
 	idStr := chi.URLParam(r, "id")
 	jwtStr := chi.URLParam(r, "jwt")
+	//tokenData := VerifyToken(w, r)
+
+	audioFilePath, err := s.store.AudioFile().AudioFilePathByID(r.Context(), idStr)
+	if err != nil {
+		w.WriteHeader(http.StatusBadRequest)
+		fmt.Fprintf(w, "DB err: %v", err)
+		return
+	}
 	fmt.Println("Got params:", idStr, jwtStr)
+
+	w.Header().Set("Connection", "Keep-Alive")
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+	w.Header().Set("X-Content-Type-Options", "nosniff")
+	w.Header().Set("Content-Type", "audio/mpeg")
+
+	file, err := os.ReadFile(audioFilePath)
+	if err != nil {
+		fmt.Println(err)
+	}
+
+	http.ServeContent(w, r, "audio", time.Now(), bytes.NewReader(file))
+
+	//from azure
+	//var buf []byte
+	//buf, err := json.Marshal(getAudioFile)
+	//if err != nil {
+	//	log.Fatal(err)
+	//}
+	//_, err = w.Write(buf)
+	//if err != nil {
+	//	log.Fatal(err)
+	//}
+	w.Header().Set("Access-Control-Allow-Headers", "Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers")
+}
+
+func (s *Server) getAudioSegmentByID(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Connection", "Keep-Alive")
+	idStr := chi.URLParam(r, "id")
+	orderId := chi.URLParam(r, "orderId")
+	orderId1, _ := strconv.Atoi(orderId)
+	jwtStr := chi.URLParam(r, "jwt")
+	fmt.Println("Got params:", idStr, jwtStr, orderId)
 	// id, err := strconv.Atoi(idStr)
 	// if err != nil {
 	// 	fmt.Fprintf(w, "Unknown err: %v", err)
@@ -104,7 +157,13 @@ func (s *Server) getAudioByID(w http.ResponseWriter, r *http.Request) {
 	//tokenData := VerifyToken(w, r)
 
 	//getAudioFile := s.getAudioFromBlob("qwe", "testcall.wav")
-
+	audioSegmentFilePath, err := s.store.AudioFile().AudioSegmentPathByID(r.Context(), idStr, orderId1)
+	if err != nil {
+		w.WriteHeader(http.StatusBadRequest)
+		fmt.Fprintf(w, "DB err: %v", err)
+		return
+	}
+	fmt.Println("Got params:", idStr, jwtStr)
 	w.Header().Set("Connection", "Keep-Alive")
 	w.Header().Set("Access-Control-Allow-Origin", "*")
 	w.Header().Set("X-Content-Type-Options", "nosniff")
@@ -117,7 +176,7 @@ func (s *Server) getAudioByID(w http.ResponseWriter, r *http.Request) {
 	//	return
 	//}
 
-	file, err := os.ReadFile("C:/Users/User/Desktop/diploma/testcall.wav")
+	file, err := os.ReadFile(audioSegmentFilePath)
 	//n, err := w.Write(file)
 	if err != nil {
 		fmt.Println(err)

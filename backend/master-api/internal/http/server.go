@@ -1,9 +1,8 @@
 package http
 
 import (
-	"bytes"
 	"context"
-	"io"
+	"github.com/go-chi/chi/middleware"
 	"log"
 	"master-api/internal/store"
 	"net/http"
@@ -41,38 +40,38 @@ func NewServer(ctx context.Context, opts ...ServerOption) *Server {
 	return srv
 }
 
+//r.Get("/test", func(w http.ResponseWriter, r *http.Request) {
+//	start := time.Now()
+//
+//	resp, err := http.Get("https://diploma.blob.core.windows.net/qwe/testcall.wav")
+//	if err != nil {
+//		log.Fatal(err)
+//	}
+//	defer resp.Body.Close()
+//	w.Header().Set("Connection", "Keep-Alive")
+//	w.Header().Set("Content-Type", "audio/mpeg")
+//	w.Header().Set("Access-Control-Allow-Origin", "*")
+//	w.Header().Set("X-Content-Type-Options", "nosniff")
+//
+//	body, err := io.ReadAll(resp.Body)
+//	log.Printf("Finished from /test: %v", time.Since(start))
+//	http.ServeContent(w, r, "audio", time.Now(), bytes.NewReader(body))
+//})
 func (s *Server) basicHandler() chi.Router {
 	r := chi.NewRouter()
-	r.Get("/test", func(w http.ResponseWriter, r *http.Request) {
-		start := time.Now()
-
-		resp, err := http.Get("https://diploma.blob.core.windows.net/qwe/testcall.wav")
-		if err != nil {
-			log.Fatal(err)
-		}
-		defer resp.Body.Close()
-		w.Header().Set("Connection", "Keep-Alive")
-		w.Header().Set("Content-Type", "audio/mpeg")
-		w.Header().Set("Access-Control-Allow-Origin", "*")
-		w.Header().Set("X-Content-Type-Options", "nosniff")
-
-		body, err := io.ReadAll(resp.Body)
-		log.Printf("Finished from /test: %v", time.Since(start))
-		http.ServeContent(w, r, "audio", time.Now(), bytes.NewReader(body))
-	})
+	r.Use(middleware.Throttle(20))
 
 	r.Get("/profiles", s.getAllUsers)
 	r.Post("/profiles/create", s.createProfile)
 	r.Post("/profiles/login", s.login)
-	r.Put("/profiles", func(w http.ResponseWriter, r *http.Request) {})
-	r.Delete("/profiles/{id}", func(w http.ResponseWriter, r *http.Request) {})
+	//r.Put("/profiles", func(w http.ResponseWriter, r *http.Request) {})
+	//r.Delete("/profiles/{id}", func(w http.ResponseWriter, r *http.Request) {})
 
 	r.Get("/audiofiles", s.getAll)
-	r.Get("/audiofiles/{id}/{jwt}", s.getAudioByID)
-	r.Get("/audiofiles/segment/{id}/{jwt}", func(writer http.ResponseWriter, request *http.Request) {
-
-	})
-	r.Post("/audiofiles/upload", s.uploadAudioFile)
+	r.Get("/audiofiles/{id}", s.getByID)
+	r.Get("/audio/{id}/{jwt}", s.getAudioByID)
+	r.Get("/audio/segment/{id}/{orderId}/{jwt}", s.getAudioSegmentByID)
+	r.Post("/audio/upload", s.uploadAudioFile)
 	r.Delete("/audiofiles/{id}", func(w http.ResponseWriter, r *http.Request) {})
 
 	return r

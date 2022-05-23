@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="28db282a-df31-44b6-b473-e35b93635fbd" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../../Logical Architecture.drawio" beforeDir="false" afterPath="$PROJECT_DIR$/../../Logical Architecture.drawio" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Sequence Diagram.drawio" beforeDir="false" afterPath="$PROJECT_DIR$/../../Sequence Diagram.drawio" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../api-audio-processing/.idea/api-audio-processing.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../api-audio-processing/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../api-audio-processing/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../api-audio-processing/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../api-audio-processing/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../api-audio-processing/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../api-audio-processing/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../api-audio-processing/app.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../api-audio-processing/audio_segmentation.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../api-audio-processing/emotion_recognition.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../emotion-recognition/.ipynb_checkpoints/CNN-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/../emotion-recognition/.ipynb_checkpoints/CNN-checkpoint.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../emotion-recognition/CNN.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/../emotion-recognition/CNN.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../emotion-recognition/MLP.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/../emotion-recognition/MLP.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../file-storage/qwe/0_4245019667_testcall.wav.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../file-storage/qwe/10_4245019667_testcall.wav.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../file-storage/qwe/11_4245019667_testcall.wav.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../file-storage/qwe/12_4245019667_testcall.wav.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../file-storage/qwe/13_4245019667_testcall.wav.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../file-storage/qwe/14_4245019667_testcall.wav.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../file-storage/qwe/15_4245019667_testcall.wav.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../file-storage/qwe/16_4245019667_testcall.wav.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../file-storage/qwe/17_4245019667_testcall.wav.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../file-storage/qwe/18_4245019667_testcall.wav.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../file-storage/qwe/19_4245019667_testcall.wav.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../file-storage/qwe/1_4245019667_testcall.wav.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../file-storage/qwe/20_4245019667_testcall.wav.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../file-storage/qwe/21_4245019667_testcall.wav.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../file-storage/qwe/2_4245019667_testcall.wav.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../file-storage/qwe/3_4245019667_testcall.wav.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../file-storage/qwe/4245019667_testcall.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../file-storage/qwe/4_4245019667_testcall.wav.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../file-storage/qwe/5_4245019667_testcall.wav.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../file-storage/qwe/6_4245019667_testcall.wav.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../file-storage/qwe/7_4245019667_testcall.wav.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../file-storage/qwe/8_4245019667_testcall.wav.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../file-storage/qwe/9_4245019667_testcall.wav.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../master-api/internal/http/audiofiles.go" beforeDir="false" afterPath="$PROJECT_DIR$/../master-api/internal/http/audiofiles.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../master-api/internal/http/server.go" beforeDir="false" afterPath="$PROJECT_DIR$/../master-api/internal/http/server.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../master-api/internal/store/mongo/audioFiles.go" beforeDir="false" afterPath="$PROJECT_DIR$/../master-api/internal/store/mongo/audioFiles.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../master-api/internal/store/store.go" beforeDir="false" afterPath="$PROJECT_DIR$/../master-api/internal/store/store.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/src/Eternal_Raijin_La_Espada.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/src/Item/Item.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/Item/Item.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/src/Item/ItemSegment.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/src/List/List.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/List/List.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/src/Main/Main.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/Main/Main.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/src/reducers/Logged.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/reducers/Logged.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/src/reducers/LoggedReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/reducers/LoggedReducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/src/reducers/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/reducers/index.js" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="27xKhg6vic5YjDT7YrA5CL2Nebc" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RunManager">
+    <configuration name="api-audio-processing" type="PythonConfigurationType" factoryName="Python">
+      <module name="api-audio-processing" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/app.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="28db282a-df31-44b6-b473-e35b93635fbd" name="Changes" comment="" />
+      <created>1650256419359</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1650256419359</updated>
+      <workItem from="1650256420401" duration="1869000" />
+      <workItem from="1650264716333" duration="2074000" />
+      <workItem from="1650292073379" duration="527000" />
+      <workItem from="1650351094654" duration="138000" />
+      <workItem from="1650354044558" duration="6019000" />
+      <workItem from="1650362603991" duration="3518000" />
+      <workItem from="1650796378655" duration="10663000" />
+      <workItem from="1650824384192" duration="1022000" />
+      <workItem from="1650861720186" duration="445000" />
+      <workItem from="1650866242661" duration="734000" />
+      <workItem from="1650871386241" duration="1364000" />
+      <workItem from="1650879819848" duration="1102000" />
+      <workItem from="1651209135061" duration="6000" />
+      <workItem from="1651504919557" duration="3095000" />
+      <workItem from="1652018679935" duration="7366000" />
+      <workItem from="1652070116913" duration="3168000" />
+      <workItem from="1652095850603" duration="939000" />
+      <workItem from="1652097040347" duration="2436000" />
+      <workItem from="1652195902813" duration="195000" />
+      <workItem from="1652533059761" duration="1733000" />
+      <workItem from="1652589946368" duration="1075000" />
+      <workItem from="1652711914392" duration="2653000" />
+      <workItem from="1652726944732" duration="1172000" />
+      <workItem from="1653150255813" duration="280000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/audio_processing_api$api_audio_processing.coverage" NAME="api-audio-processing Coverage Results" MODIFIED="1653150261545" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/api_audio_processing$api_audio_processing.coverage" NAME="api-audio-processing Coverage Results" MODIFIED="1652589965204" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+  </component>
+</project>

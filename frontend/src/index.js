@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-// import './index.css';
+import './index.css';
 import App from './App';
 import { createStore } from 'redux';
 import reportWebVitals from './reportWebVitals';
@@ -17,7 +17,7 @@ ReactDOM.render(
 	<React.StrictMode>
 		<Provider store={store}>
 			<PersistGate persistor={persistor}>
-				<App />
+				<App/>
 			</PersistGate>
 		</Provider>
 	</React.StrictMode>,

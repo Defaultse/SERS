@@ -25,7 +25,9 @@ type ProfileRepository interface {
 type AudioFileRepository interface {
 	Create(ctx context.Context, audioFile *models.AudioFiles) (string, error)
 	All(ctx context.Context, tokenData *models.Profile) ([]*models.AudioFiles, error)
-	ByID(ctx context.Context, id int) (*models.AudioFiles, error)
+	AudioFilePathByID(ctx context.Context, audioId string) (string, error)
+	AudioSegmentPathByID(ctx context.Context, audioId string, orderId int) (string, error)
+	ByID(ctx context.Context, id string) (*models.AudioFiles, error)
 	Update(ctx context.Context, audioFile *models.AudioFiles) error
 	Delete(ctx context.Context, id int) error
 }

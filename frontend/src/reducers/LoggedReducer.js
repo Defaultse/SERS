@@ -1,16 +1,16 @@
 import { Logged } from './Logged';
 
-var loggedReducer = function(state, action) {
-	state = false;
-
-	switch (action.type) {
+const loggedReducer = (state = false, action) => {
+	console.log(state)
+	switch(action.type) {
+		case Logged.Logout:
+			localStorage.clear()
+			return false;
 		case Logged.Login:
 			return true;
-		case Logged.Logout:
-			return false;
 		default:
 			return state;
 	}
-};
+}
 
 export default loggedReducer;

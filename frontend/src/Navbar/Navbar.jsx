@@ -10,13 +10,15 @@ export default function NavBar() {
 	const dispatch = useDispatch();
 
 	return (
+		<>
 		<Navbar bg="dark" variant="dark">
 			{logged == true ? (
-				<Container>
+				<Container className="app-container">
 					<Navbar.Brand>SERS</Navbar.Brand>
 					<Nav className="container-fluid">
 						<Nav.Link href="/">Main</Nav.Link>
 						<Nav.Link onClick={()=>dispatch({type: Logged.Logout})} href="/login" >Logout</Nav.Link>
+						<Nav.Link><img style={{width: "18px"}} src={process.env.PUBLIC_URL + '/bell.png'} /></Nav.Link>
 					</Nav>
 				</Container>
 			) : (
@@ -25,5 +27,7 @@ export default function NavBar() {
 				</Container>
 			)}
 		</Navbar>
+		<br/>
+		</>
 	);
 }

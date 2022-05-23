@@ -1,4 +1,4 @@
 export const Logged = {
-    Login: "Login",
-    Logout: "Logout"
+    Logout: "Logout",
+    Login: "Login"
 }

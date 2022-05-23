@@ -5,7 +5,7 @@ import loggedReducer from "./LoggedReducer";
 
 var persistConfig = {
     key: 'root',
-    storage: storage,
+    storage,
     whitelist: ['isLogged']
 };
 var allReducers = combineReducers({

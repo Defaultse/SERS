@@ -45,8 +45,8 @@ func (a AudioFilesRepository) All(ctx context.Context, tokenData *models.Profile
 	audioFiles := make([]*models.AudioFiles, 0)
 	cursor, err := a.collection.Find(
 		context.TODO(),
-		//bson.D{{"ProfileId", tokenData.ID}},
-		bson.D{},
+		bson.D{{"ProfileId", tokenData.ID}},
+		//bson.D{},
 	)
 	fmt.Println(cursor)
 
@@ -80,9 +80,46 @@ func (a AudioFilesRepository) All(ctx context.Context, tokenData *models.Profile
 	return audioFiles, err
 }
 
-func (a AudioFilesRepository) ByID(ctx context.Context, id int) (*models.AudioFiles, error) {
-	//TODO implement me
-	panic("implement me")
+func (a AudioFilesRepository) AudioFilePathByID(ctx context.Context, audioId string) (string, error) {
+	var audioFile models.AudioFiles
+	objID, _ := primitive.ObjectIDFromHex(audioId)
+	//fmt.Println(objID)
+	err := a.collection.FindOne(
+		context.TODO(),
+		bson.M{"_id": bson.M{"$eq": objID}},
+	).Decode(&audioFile)
+	if err != nil {
+		log.Fatal(err)
+	}
+	return audioFile.AudioFilePath, nil
+}
+
+func (a AudioFilesRepository) AudioSegmentPathByID(ctx context.Context, audioId string, orderId int) (string, error) {
+	var audioFile models.AudioFiles
+	objID, _ := primitive.ObjectIDFromHex(audioId)
+	//fmt.Println(objID)
+	err := a.collection.FindOne(
+		context.TODO(),
+		bson.M{"_id": bson.M{"$eq": objID}},
+	).Decode(&audioFile)
+	if err != nil {
+		log.Fatal(err)
+	}
+	return audioFile.AudioSegments[orderId].SegmentFilePath, nil
+}
+
+func (a AudioFilesRepository) ByID(ctx context.Context, id string) (*models.AudioFiles, error) {
+	var audioFile models.AudioFiles
+	objID, _ := primitive.ObjectIDFromHex(id)
+	//fmt.Println(objID)
+	err := a.collection.FindOne(
+		context.TODO(),
+		bson.M{"_id": bson.M{"$eq": objID}},
+	).Decode(&audioFile)
+	if err != nil {
+		log.Fatal(err)
+	}
+	return &audioFile, nil
 }
 
 func (a AudioFilesRepository) Update(ctx context.Context, audioFile *models.AudioFiles) error {

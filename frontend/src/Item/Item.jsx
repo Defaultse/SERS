@@ -1,42 +1,68 @@
 import { React } from 'react';
-import { Accordion, FormControl, Button } from 'react-bootstrap';
+import { Accordion, FormControl, Button, Card, Nav } from 'react-bootstrap';
 import { propTypes } from 'react-bootstrap/esm/Image';
-import ItemSegment from './ItemSegment';
+import { Link, useParams } from 'react-router-dom';
 import '../List/List.css';
+import Moment from 'moment';
+import AudioDetail from '../AudioDetail/AudioDetail';
+import './Item.css';
+
+function count_angry(segments) {
+	let cnt = 0;
+	for (let i = 0; i < segments.length; i++) {
+		if (segments[i].SegmentEmotion == 'angry') {
+			cnt++;
+		}
+	}
+	console.log(segments[0].SegmentEmotion);
+	return cnt;
+}
 
 export default function List({ item }) {
-	// console.log(item.AudioSegments)
+	let { id } = useParams();
+	let cnt = count_angry(item.AudioSegments);
 
-	const segments = item.AudioSegments.map((segment) => <ItemSegment props={segment} />);
+	// const playing = () => {
+	// 	alert('Audio is playing!!!');
+	// };
 
+	// document.getElementById('stopButton').addEventListener('click', () => {
+	// 	document.querySelectorAll('audio').forEach((el) => el.pause());
+	// });
 	return (
+		<>
 		<div className="app-container">
-			<Accordion.Item>
-				<Accordion.Header>Audio ID: {item.id}</Accordion.Header>
-				<Accordion.Body>
-					<h3>Upload date: {item.UploadDate}</h3>
-					<audio controls preload="auto" type="audio/mpeg" className="width:20px">
-						<source
-							src={`http://localhost:8000/audiofiles/` + item.id + '/' + localStorage.getItem('token')}
-							type="audio/mpeg"
-						/>
+			<Card>
+				<Card.Header className="h5">Audio ID: {item.id}</Card.Header>
+				<Card.Body>
+					<div className="item-align-left">
+						<Card.Title>Upload date: {Moment(item.UploadDate).format('LLLL')} </Card.Title>
+						<Card.Text>Выявлено {cnt} нарушении</Card.Text>
+						<audio controls preload="auto" type="audio/mpeg" className="width:20px">
+							<source
+								src={`http://localhost:8000/audio/` + item.id + '/' + localStorage.getItem('token')}
+								type="audio/mpeg"
+								controls
+								// onplay={() => playing()}
+							/>
 						Your browser does not support the
-						{/* <code>audio</code> element. */}
+						<code>audio</code> element.
 					</audio>
-					<table class="table">
-						<thead>
-							<tr>
-								<th scope="col">#</th>
-								<th scope="col">Order</th>
-								<th scope="col">Audio</th>
-								<th scope="col">Emotion</th>
-							</tr>
-						</thead>
-						<tbody>{segments}</tbody>
-					</table>
-					<br />
-				</Accordion.Body>
-			</Accordion.Item>
+					</div>
+					<div className="item-align-right">
+						<Button
+							onClick={(event) => (window.location.href = `/audiofiles/` + item.id)}
+							type="button"
+							class="btn btn-primary w-200"
+							style={{height: "6em"}}
+						>
+						Details
+						</Button>
+					</div>
+				</Card.Body>
+			</Card>
 		</div>
+		<br/>
+		</>
 	);
 }
