@@ -15,6 +15,10 @@ import (
 	"github.com/go-chi/render"
 )
 
+func (s *Server) checkToken(w http.ResponseWriter, r *http.Request) {
+	VerifyToken(w, r)
+}
+
 func (s *Server) getAll(w http.ResponseWriter, r *http.Request) {
 	tokenData := VerifyToken(w, r)
 	audioFiles, err := s.store.AudioFile().All(r.Context(), tokenData)
@@ -29,6 +33,9 @@ func (s *Server) getAll(w http.ResponseWriter, r *http.Request) {
 }
 
 func (s *Server) getByID(w http.ResponseWriter, r *http.Request) {
+	fmt.Println(r.Body)
+	fmt.Println(r.Header)
+
 	//tokenData := VerifyToken(w, r)
 	idStr := chi.URLParam(r, "id")
 	audioFiles, err := s.store.AudioFile().ByID(r.Context(), idStr)
@@ -41,19 +48,24 @@ func (s *Server) getByID(w http.ResponseWriter, r *http.Request) {
 }
 
 func (s *Server) uploadAudioFile(w http.ResponseWriter, r *http.Request) {
+	fmt.Println(r.Header)
+	fmt.Println(r.Body)
 	// r.ParseMultipartForm(0<<30)
 	tokenData := VerifyToken(w, r)
 	if tokenData == nil {
 		fmt.Fprintf(w, "Login please")
 		return
 	}
+
 	file, handler, err := r.FormFile("audio")
+
 	if err != nil {
 		fmt.Println("Error Retrieving the File")
 		w.Write([]byte(err.Error()))
 		fmt.Println(err)
 		return
 	}
+
 	defer file.Close()
 
 	//Upload to azure

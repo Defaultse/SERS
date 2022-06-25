@@ -1,0 +1,9 @@
+.upload-container {
+	margin: 0 auto;
+    /* display: flex; */
+    justify-content: center;
+    width: 40em;
+    /* margin-left:2em; */
+	/* width: 60em; */
+    /* padding-left: em; */
+}

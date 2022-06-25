@@ -61,17 +61,20 @@ func (s *Server) basicHandler() chi.Router {
 	r := chi.NewRouter()
 	r.Use(middleware.Throttle(20))
 
+	r.Post("/checkToken", s.checkToken)
+
 	r.Get("/profiles", s.getAllUsers)
 	r.Post("/profiles/create", s.createProfile)
 	r.Post("/profiles/login", s.login)
-	//r.Put("/profiles", func(w http.ResponseWriter, r *http.Request) {})
-	//r.Delete("/profiles/{id}", func(w http.ResponseWriter, r *http.Request) {})
 
 	r.Get("/audiofiles", s.getAll)
 	r.Get("/audiofiles/{id}", s.getByID)
 	r.Get("/audio/{id}/{jwt}", s.getAudioByID)
 	r.Get("/audio/segment/{id}/{orderId}/{jwt}", s.getAudioSegmentByID)
 	r.Post("/audio/upload", s.uploadAudioFile)
+	//r.Post("/audio/manualUpload/", func(writer http.ResponseWriter, request *http.Request) {
+	//	writer.Write([]byte("Implement me"))
+	//})
 	r.Delete("/audiofiles/{id}", func(w http.ResponseWriter, r *http.Request) {})
 
 	return r

@@ -52,6 +52,7 @@ export default function Login() {
 					onChange={(e) => {
 						setPasswordState(e.target.value);
 					}}
+					type="password"
 					placeholder="Password"
 					aria-label="password"
 					aria-describedby="basic-addon1"
@@ -59,7 +60,7 @@ export default function Login() {
 			</InputGroup>
 
 			<Button onClick={handleSubmit} variant="primary">
-				Button
+				Login
 			</Button>
 
 			{/* <b/> */}

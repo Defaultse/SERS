@@ -50,6 +50,9 @@ func VerifyToken(w http.ResponseWriter, r *http.Request) *models.Profile {
 	token, err := jwt.ParseWithClaims(reqToken, &UserClaims{}, func(token *jwt.Token) (interface{}, error) {
 		return []byte(signingKey), nil
 	})
+	if err != nil {
+		fmt.Printf("Err %v", err)
+	}
 
 	tokenData := new(models.Profile)
 	if claims, ok := token.Claims.(*UserClaims); ok && token.Valid {
@@ -59,7 +62,8 @@ func VerifyToken(w http.ResponseWriter, r *http.Request) *models.Profile {
 		}
 		fmt.Printf("Token verifyed ID: %v, Expires: %v \n", claims.Profile.ID, claims.StandardClaims.ExpiresAt)
 	} else {
-		fmt.Fprintf(w, "Unknown err: %v \n", err)
+		fmt.Fprintf(w, "401")
+		return nil
 	}
 	return tokenData
 }

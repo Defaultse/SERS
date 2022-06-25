@@ -2,13 +2,16 @@ package main
 
 import (
 	"context"
-	"github.com/Azure/azure-sdk-for-go/sdk/storage/azblob"
 	"log"
 	"master-api/internal/http"
 	"master-api/internal/store/mongo"
+
+	"github.com/Azure/azure-sdk-for-go/sdk/storage/azblob"
 )
 
-const uri = "mongodb://localhost:27017/?readPreference=primary&appname=MongoDB%20Compass&directConnection=true&ssl=false"
+// const uri = "mongodb://localhost:27017/?readPreference=primary&appname=MongoDB%20Compass&directConnection=true&ssl=false"
+
+const uri = "mongodb://localhost:27017/?readPreference=primary&appname=MongoDB%20Compass&directConnection=true&ssl=false&connect=direct"
 
 func main() {
 	ctx := context.Background()

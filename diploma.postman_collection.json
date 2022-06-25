@@ -1,0 +1,231 @@
+{
+	"info": {
+		"_postman_id": "b464bcd0-e0b4-4386-a0b8-b3b07c5ccd3f",
+		"name": "diploma",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "10483724"
+	},
+	"item": [
+		{
+			"name": "Profile",
+			"item": [
+				{
+					"name": "create profile",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"qwe\",\r\n    \"password\": \"qwe\",\r\n    \"email\": \"qwe@mail.ru\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:8000/profiles/create"
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"qwe\",\r\n    \"password\": \"qwe\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:8000/profiles/login"
+					},
+					"response": []
+				},
+				{
+					"name": "get all",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "localhost:8000/profiles"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Audio",
+			"item": [
+				{
+					"name": "Audio Files",
+					"item": [
+						{
+							"name": "upload audiofile",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJQcm9maWxlIjp7ImlkIjoiNjI1Y2Y1MTE1YjI4MTgxYjdiMzhmYmRjIiwidXNlcm5hbWUiOiJxd2UiLCJlbWFpbCI6IiJ9LCJhdXRob3JpemVkIjp0cnVlLCJleHAiOjE2NTIxMDgxNDZ9.rnmhOXd2F3yhR-oqHbsalYajqN3rS8L_DZkgP2PaCk8"
+									}
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "audio",
+											"type": "file",
+											"src": "/C:/Users/User/Desktop/diploma/M_0073_12y5m_1.wav"
+										},
+										{
+											"key": "enctype",
+											"value": "multipart/form-data",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:8000/audio/upload",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"audio",
+										"upload"
+									],
+									"query": [
+										{
+											"key": "file",
+											"value": null,
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get audiofile by id",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJQcm9maWxlIjp7ImlkIjoiNjI1Y2Y1MTE1YjI4MTgxYjdiMzhmYmRjIiwidXNlcm5hbWUiOiJxd2UiLCJlbWFpbCI6IiJ9LCJhdXRob3JpemVkIjp0cnVlLCJleHAiOjE2NTIxMjEwNDh9.8_EXWs8ORiXy3A58soKhH-KWiu5Nrx60BZ21YG7Con8"
+									}
+								},
+								"method": "GET",
+								"header": [],
+								"url": "localhost:8000/audio/62791dc16cf2c55c80de641e/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJQcm9maWxlIjp7ImlkIjoiNjI1Y2Y1MTE1YjI4MTgxYjdiMzhmYmRjIiwidXNlcm5hbWUiOiJxd2UiLCJlbWFpbCI6IiJ9LCJhdXRob3JpemVkIjp0cnVlLCJleHAiOjE2NTIxNjc5MDV9.OdnG_I-E7-cE0DZOYBkGGY-RRLryUYmvLhbpvPbuHxw"
+							},
+							"response": []
+						},
+						{
+							"name": "get audio segment by id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": "localhost:8000/audio/segment/62791dc16cf2c55c80de641e/0/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJQcm9maWxlIjp7ImlkIjoiNjI1Y2Y1MTE1YjI4MTgxYjdiMzhmYmRjIiwidXNlcm5hbWUiOiJxd2UiLCJlbWFpbCI6IiJ9LCJhdXRob3JpemVkIjp0cnVlLCJleHAiOjE2NTIxNjc5MDV9.OdnG_I-E7-cE0DZOYBkGGY-RRLryUYmvLhbpvPbuHxw"
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "segment audio",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"strictSSL": true,
+						"disabledSystemHeaders": {},
+						"followRedirects": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJQcm9maWxlIjp7ImlkIjoiNjI1Y2Y1MTE1YjI4MTgxYjdiMzhmYmRjIiwidXNlcm5hbWUiOiJxd2UiLCJlbWFpbCI6IiJ9LCJhdXRob3JpemVkIjp0cnVlLCJleHAiOjE2NTAzNDYyNzd9.d8YyBos-NBCWYZwWm1htDgyyTrc03q4VWGMwDKgHNcE"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8000/audiofiles/62791dc16cf2c55c80de641e/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJQcm9maWxlIjp7ImlkIjoiNjI1Y2Y1MTE1YjI4MTgxYjdiMzhmYmRjIiwidXNlcm5hbWUiOiJxd2UiLCJlbWFpbCI6IiJ9LCJhdXRob3JpemVkIjp0cnVlLCJleHAiOjE2NTAzNDYyNzd9.d8YyBos-NBCWYZwWm1htDgyyTrc03q4VWGMwDKgHNcE"
+					},
+					"response": []
+				},
+				{
+					"name": "all audio",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJQcm9maWxlIjp7ImlkIjoiNjI1Y2Y1MTE1YjI4MTgxYjdiMzhmYmRjIiwidXNlcm5hbWUiOiJxd2UiLCJlbWFpbCI6IiJ9LCJhdXRob3JpemVkIjp0cnVlLCJleHAiOjE2NTIxNjE3ODN9.gMyK2_0K-svXiHcg7kNdh6TLOr91Xxb5Gb1607yGyic"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "localhost:8000/audiofiles"
+					},
+					"response": []
+				},
+				{
+					"name": "segement audio signal",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"filePath\": \"C:\\/Users\\/User\\/Desktop\\/diploma\\/voice-patrol\\/backend\\/test\\/qwe\\/1168697388-testcall.wav\",\r\n    \"profileId\": \"625cf5115b28181b7b38fbdc\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:8000/api/segmentAudio"
+					},
+					"response": []
+				},
+				{
+					"name": "audio by id",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "check token",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJQcm9maWxlIjp7ImlkIjoiNjI1Y2Y1MTE1YjI4MTgxYjdiMzhmYmRjIiwidXNlcm5hbWUiOiJxd2UiLCJlbWFpbCI6IiJ9LCJhdXRob3JpemVkIjp0cnVlLCJleHAiOjE2NTIxNjE3ODN9.gMyK2_0K-svXiHcg7kNdh6TLOr91Xxb5Gb1607yGyic"
+					}
+				},
+				"method": "POST",
+				"header": [],
+				"url": "localhost:8000/checkToken"
+			},
+			"response": []
+		}
+	]
+}

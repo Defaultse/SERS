@@ -1,8 +1,10 @@
 import { React } from 'react';
 import { useEffect, useState, useRef, createRef } from 'react';
 import { useParams } from 'react-router-dom';
-
+import { Button } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './AudioSegment.css'
+
 export default function AudioSegment({ props, audioId }) {
 	const audioOrder = props.SegmentOrder + 1
     const emotion = props.SegmentEmotion
@@ -10,6 +12,7 @@ export default function AudioSegment({ props, audioId }) {
 	return (
 			<tr>
 				<th scope="row"> {audioOrder} </th>
+
 				<td>
                     <audio controls preload="auto" type="audio/mpeg" className="width:20px">
 						<source
@@ -20,8 +23,13 @@ export default function AudioSegment({ props, audioId }) {
 						<code>audio</code> element.
 					</audio>
 				</td>
+				
 				{(emotion == "angry" ? <td><img style={{width: "30px"}} src={process.env.PUBLIC_URL + '/alert.png'} /></td> : <td></td>)}
 				{(emotion == '' ? <td>Emotion not identified yet</td> : <td>{emotion}</td>)}
+
+				<td>
+					<Button variant="outline-warning">False</Button>
+				</td>
 			</tr>
 	);
 }
